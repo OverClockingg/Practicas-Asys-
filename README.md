@@ -1,2 +1,2 @@
-# Practica-3
-Repositorio de practica 3
+# Practica Asys 
+Repositorio de practicas para la materia de Analisis de señales y sistemas 

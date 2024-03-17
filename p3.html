@@ -65,22 +65,17 @@
 %% 
 % 
 %% 
+ 
 % Para solucionar este ejercicio procederemos a declar nuestras 
-% 
 % variables y funciones necesarias para proceder con la programacion
-% 
 % del ejercicio:
 
 opengl hardware 
 %% Introducción: Funcion de heavisde en x(t)
 % Dado que nuestra funcion viene multiplicada por "heaviside" o el 
-% 
-% scalon unitaro, interpreamos que apartir de cierto punto la grafica 
-% 
-% de la funcion valdra cero y sobrevivira apartir de cierta condicion.
-% 
+% escalon unitaro, interpretamos que apartir de cierto punto la grafica 
+% de la función valdra cero y sobrevivira apartir de cierta condicion.
 % Es necesario interpretar que u(-t)  es una operacion "time reversal"
-% 
 % la cual opera de la siguiente manera:
 
 clear; 
@@ -95,32 +90,25 @@ syms t;
  title("Heaviside u(-t)")
 %% 
 % Esta condicion de u(-t) establece que cualquier señal o funcion
-% 
-% multiplicada por ella, para valores mayores de 0; no sobreviva la
-% 
-% funcion debido a que el producto se hace altura por altura.
+% multiplicada por ella, para valores mayores de 0; no sobreviva 
+% la funcion debido a que el producto se hace altura por altura.
+ 
 %% Declaracion de x(t) e inciso A):  Re{x(t)} versus Im{x(at)}  para a = 0.5, 1, and 2
+ 
 % Una vez comprendido como actua la inversion del escalon
-% 
-% unitario en nuestra funcion, procedemos a declar x(t) la cual
-% 
+% unitario en nuestra función, procedemos a declar x(t) la cual
 % consta de una parte real y otra imaginaria, esto causa que 
-% 
 % pueda escribirse de forma exponencial o polar respectivamente .
-% 
+ 
 % Teniendo eso en cuenta esto podemos hacernos una idea como
-% 
 % podria verse su grafica.
 
 u = @(t) 1.0.*(t>=0);
 x = @(t) exp((t)*(1+(1i*2*pi))).*u(-t);
 %% 
 % La lineas de codigo del 20-31 unicamente sirven para declarar 
-% 
 % los valores de (a) que pide el ejercicio en el inciso a). Siendo 
-% 
 % el principal problema graficar la parte real vs la imaginaria 
-% 
 % en los diferentes valores de "a" pedidos desde -10<=t<=10.
 
 a=0.5;
@@ -136,10 +124,8 @@ x2=imag(x2);
 x3=imag(x3);
 xr=real(x(tvec)); % Parte real 
 %% 
-% Esta parte del codigo se dedica a graficar unicamente el inciso a),
-% 
+% Esta parte del codigo se dedica a graficar unicamente el inciso a)
 % lo importante en este inciso es identificar como actua el factor de
-% 
 % escalamiento a en la grafica.
 
 figure(3)
@@ -164,13 +150,9 @@ title("Valor de a=2")
 grid on
 %% Declaracion de y(t) e inciso B: Grafica de y(t) y analisis analitico en t(0).   
 % Como en la demas graficas es necesario indicar la parte 
-% 
 % real e imaginaria de la funcion por separado para que 
-% 
-% matlabno arroje algun error o warning, a su vez procedemos 
-% 
+% matlab no arroje algun error o warning, a su vez procedemos 
 % a evaluar y(t) en cero es decir y(0) para poder obtener el
-% 
 % valor o punto donde la grafica presenta un salto. 
 
 y = @(t) 2.*((exp((t)*(1+(1i*2*pi))).*u(-t))).*((-5-t)/2); 
@@ -191,9 +173,7 @@ datatip(chart2,0,-5,0,"Location","southeast");
 title("1: Grafica de y(t)")
 %% 
 % Como se ve en la grafica 1 es dificil de apreciar la discontinuidad 
-% 
 % en el punto encontrado por lo que es mas util graficar la funcion 
-% 
 % solo en 2 planos para ubicar mas facilmente la discontinuidad:
 
 figure(7)
@@ -210,13 +190,9 @@ title("2: Grafica de y(t)")
 % 
 % 
 % La complejidad de este inciso parte de la interpretacion de matlab, 
-% 
 % en este sentido; como definimos la funcion a integrar, pues se
-% 
 % puede partir de manera simbolica con la variable t pero es necesario 
-% 
 % sacar la norma de la funcion al cuadrado por lo cual procedemos 
-% 
 % de la siguiente manera:
 
 x_squared= @(t)  (abs(x(t))).*(abs(x(t)));%Norma al cuadrado de la funcion x(t)
@@ -236,20 +212,15 @@ y_squared= @(t)  (abs(y(t))).*(abs(y(t))); %Norma al cuadrado de la funcion y(t)
 E_y=integral(y_squared,-Inf,Inf) %E_y indica la energia de y(t)
 %% Inciso E: gráfica de x(t) 
 % Hacemos uso de xy previamente ya declaro como la funcion x(t)
-% 
 % evaluada en tvec, el cual es nuestro vector con el tamaño solicitado.
-% 
 % Notese que es necesario encontrar la parte real e imaginaria para 
-% 
 % que matlab interprete de manera correcto lo que deseamos graficar,
-% 
 % ya que si no lo hacemos saltara un warning. 
 
 x_r=real(xy);
 x_i=imag(xy);
 %% 
 % Esta parte del codigo se encarga de plotear la funcion x(t) 
-% 
 % para los correspondientes valores (t)
 
 figure(8)
